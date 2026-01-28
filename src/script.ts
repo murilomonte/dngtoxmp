@@ -1,8 +1,20 @@
 import { xmpExtract } from "./xmpExtract.js";
-import { xmpParser } from "./xmpParser.js";
+import { xmpParse } from "./xmpParse.js";
+import { xmpSave } from "./xmpSave.js";
 
 const dngform = document.getElementById("dngform");
-const dngbutton = document.getElementById("dngsubmit");
+const output = document.querySelector<HTMLElement>(".output");
+
+function downlodButton(file: File) {
+  const dlBtn = document.createElement("a");
+
+  const url = URL.createObjectURL(file);
+  dlBtn.href = url;
+  dlBtn.download = file.name;
+  dlBtn.innerText = "baixar";
+
+  output?.appendChild(dlBtn);
+}
 
 dngform?.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -12,6 +24,8 @@ dngform?.addEventListener("submit", async (event) => {
 
   if (!files || files.length === 0) return;
 
-  const xmpstr = await xmpExtract(files[0]);
-  const xmp = xmpParser(xmpstr, 'nome', 'grupo')
+  const xmpData = await xmpExtract(files[0]);
+  const xmpStr = xmpParse(xmpData, "nome", "grupo");
+  const downloadLink = xmpSave(xmpStr, "preset");
+  downlodButton(downloadLink);
 });

@@ -5,7 +5,7 @@ const NS = {
   rdf: "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
 };
 
-export function xmpParser(xmpstr: string, name: string, group: string) {
+export function xmpParse(xmpstr: string, name: string, group: string) {
   const parser = new DOMParser();
   const xml = parser.parseFromString(xmpstr, "application/xml");
 
