@@ -1,0 +1,1 @@
+// transformar a string em um blob para salvar
