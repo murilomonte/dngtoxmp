@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>DNG Converter</title>
+  <style>
+    body {
+      background-color: rgb(28, 28, 28);
+      color: white;
+    }
+
+    a {
+      color: white;
+    }
+  </style>
 </head>
+
 <body>
   <form id="dngform">
-    <label for="image">dng file</label>
-    <input type="file" name="image" id="dnginput" />
-    <button id="dngsubmit">Submit</button>
+    <div>
+      <label for="image">dng file</label>
+      <input type="file" name="image" id="dnginput" />
+    </div>
+    <div>
+      <div class="input-group">
+        <label for="presetName">Preset name</label>
+        <input type="text" name="presetName" id="presetName" required>
+      </div>
+
+      <div class="input-group">
+        <label for="groupName">Group name</label>
+        <input type="text" name="groupName" id="groupName" required>
+      </div>
+      <button id="dngsubmit">Submit</button>
+    </div>
   </form>
 
   <div class="output"></div>
 
   <script type="module" src="/src/script.ts"></script>
 </body>
+
 </html>

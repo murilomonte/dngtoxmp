@@ -1,7 +1,5 @@
-// transformar a string em um blob para salvar
-
-export function xmpSave(xmpData: string, name: string) {
-  const file = new File([xmpData], `${name}.xmp`, {
+export function xmpSave(xmpData: string, name: string, group: string) {
+  const file = new File([xmpData], `${group}-${name}.xmp`, {
     type: "text/xmp; charset=utf-8",
   });
 

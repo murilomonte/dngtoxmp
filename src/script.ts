@@ -11,7 +11,7 @@ function downlodButton(file: File) {
   const url = URL.createObjectURL(file);
   dlBtn.href = url;
   dlBtn.download = file.name;
-  dlBtn.innerText = "baixar";
+  dlBtn.innerText = `Download ${file.name}`;
 
   output?.appendChild(dlBtn);
 }
@@ -19,13 +19,37 @@ function downlodButton(file: File) {
 dngform?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
+  const presetName = document.querySelector<HTMLInputElement>("#presetName");
+  const groupName = document.querySelector<HTMLInputElement>("#groupName");
   const dnginput = document.querySelector<HTMLInputElement>("#dnginput");
-  const files = dnginput?.files;
 
-  if (!files || files.length === 0) return;
+  try {
+    if (
+      !presetName ||
+      presetName.value.length < 3 ||
+      !groupName ||
+      groupName.value.length < 3
+    ) {
+      throw new Error("The preset must have a name and a group.");
+    }
 
-  const xmpData = await xmpExtract(files[0]);
-  const xmpStr = xmpParse(xmpData, "nome", "grupo");
-  const downloadLink = xmpSave(xmpStr, "preset");
-  downlodButton(downloadLink);
+    const files = dnginput?.files;
+
+    if (!files || files.length === 0) {
+      throw new Error("Insert a .dng file.");
+    }
+
+    const xmpData = await xmpExtract(files[0]);
+    const xmpStr = xmpParse(xmpData, presetName.value, groupName.value);
+    const downloadLink = xmpSave(xmpStr, presetName.value, groupName.value);
+
+    downlodButton(downloadLink);
+  } catch (err) {
+    output!.innerHTML = "";
+    if (err instanceof Error) {
+      const errorDiv = document.createElement("div");
+      errorDiv.innerText = err.message;
+      output?.appendChild(errorDiv);
+    }
+  }
 });
