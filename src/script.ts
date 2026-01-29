@@ -1,6 +1,6 @@
 import { xmpExtract } from "./xmpExtract.js";
 import { xmpParse } from "./xmpParse.js";
-import { xmpSave } from "./xmpSave.js";
+import { xpmCreateFile } from "./xmpCreateFile.js";
 
 const dngform = document.getElementById("dngform");
 const output = document.querySelector<HTMLElement>(".output");
@@ -41,9 +41,9 @@ dngform?.addEventListener("submit", async (event) => {
 
     const xmpData = await xmpExtract(files[0]);
     const xmpStr = xmpParse(xmpData, presetName.value, groupName.value);
-    const downloadLink = xmpSave(xmpStr, presetName.value, groupName.value);
+    const xmpFile = xpmCreateFile(xmpStr, presetName.value, groupName.value);
 
-    downlodButton(downloadLink);
+    downlodButton(xmpFile);
   } catch (err) {
     output!.innerHTML = "";
     if (err instanceof Error) {
