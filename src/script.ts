@@ -6,6 +6,7 @@ const dngform = document.getElementById("dngform");
 const output = document.querySelector<HTMLElement>(".output");
 
 function downlodButton(file: File) {
+  output!.innerHTML = ''
   const dlBtn = document.createElement("a");
 
   const url = URL.createObjectURL(file);
