@@ -4,42 +4,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DNG Converter</title>
-  <style>
-    body {
-      background-color: rgb(28, 28, 28);
-      color: white;
-    }
+  <title>DNG to XMP Converter</title>
+  <meta name="description" content="Easily convert Lightroom DNG files to XMP presets for free.">
+  <link rel="shortcut icon" href="src/assets/favicon.ico" type="image/x-icon">
 
-    a {
-      color: white;
-    }
-  </style>
+  <link rel="stylesheet" href="/src/styles/styles.css">
 </head>
 
 <body>
-  <form id="dngform">
-    <div>
-      <label for="image">dng file</label>
-      <input type="file" name="image" id="dnginput" />
+  <header class="header">
+    <div class="title-div">
+      <p>Capy converter</p>
+      <h1>Dng to Xmp</h1>
     </div>
-    <div>
-      <div class="input-group">
-        <label for="presetName">Preset name</label>
-        <input type="text" name="presetName" id="presetName" required>
-      </div>
-
-      <div class="input-group">
-        <label for="groupName">Group name</label>
-        <input type="text" name="groupName" id="groupName" required>
-      </div>
-      <button id="dngsubmit">Submit</button>
+    <div class="capybara">
+      <img id="capybaraImg" src="/images/capybara/capy01.png" alt="Capybara">
     </div>
-  </form>
+  </header>
+  <main class="main">
+    <form class="dng-form" id="dngform">
+      <label for="image" id="dropContainer" class="drop-container">
+        <svg class="drop-icon" width="102" height="102" viewBox="0 0 102 102" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M44.625 76.5V24.5437L28.05 41.1187L19.125 31.875L51 0L82.875 31.875L73.95 41.1187L57.375 24.5437V76.5H44.625ZM12.75 102C9.24375 102 6.24219 100.752 3.74531 98.2547C1.24844 95.7578 0 92.7562 0 89.25V70.125H12.75V89.25H89.25V70.125H102V89.25C102 92.7562 100.752 95.7578 98.2547 98.2547C95.7578 100.752 92.7562 102 89.25 102H12.75Z"
+            fill="var(--card-text)" />
+        </svg>
+        <span class="drop-title">Select or drop .dng files here.</span>
+        <input class="file-input file-block" type="file" name="image" id="dnginput" required />
+      </label>
+      <div class="file-data">
+        <div class="input-group">
+          <label for="presetName">Preset name</label>
+          <input type="text" name="presetName" id="presetName" required>
+        </div>
+        <div class="input-group">
+          <label for="groupName">Group name</label>
+          <input type="text" name="groupName" id="groupName" required>
+        </div>
+        <button class="button" id="dngsubmit">Convert</button>
+      </div>
+    </form>
+    <div class="output disabled"></div>
+  </main>
+  <p class="copy">Made with 🪄 by <a class="link" href="https://murilomonte.github.io">Murilo</a>. Draw by Kallya. <a class="link" href="https://github.com/murilomonte/dngtoxmp">Source code.</a></p>
 
-  <div class="output"></div>
-
-  <script type="module" src="/src/script.ts"></script>
+  <script type="module" src="/src/scripts/script.ts"></script>
 </body>
 
 </html>

@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+
+:root {
+  --bg: #e9f1f6;
+  --card: #cad7df;
+  --upper-card: #9aa4aa;
+  --card-text: var(--bg);
+  --primary: #609fd3;
+  --secondary: #4f8bbc;
+  --onPrimary: var(--main-text);
+  --accent: var(--primary);
+  --main-text: #1c2226;
+  --sec-text: #7993a4;
+
+  --round-sm: 5px;
+
+  --main-font: "IBM Plex Sans";
+  --secondary-font: "EB Garamond";
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1c1c1d;
+    --card: #2a2a2a;
+    --upper-card: #454545;
+    --card-text: var(--main-text);
+    --primary: #609fd3;
+    --secondary: #4f8bbc;
+    --onPrimary: var(--bg);
+    --accent: var(--primary);
+    --main-text: #eaeaea;
+    --sec-text: #9a9a9a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--main-text);
+
+  font-family: sans-serif;
+  font-family: var(--main-font);
+}
+
+a {
+  color: var(--main-text);
+  text-decoration: none;
+}
+
+.link {
+  color: var(--primary);
+}
+
+.disabled {
+  display: none !important;
+}
+
+.header,
+.main {
+  margin: auto;
+  max-width: 900px;
+}
+
+.capybara {
+  cursor: pointer;
+  width: 130px;
+  height: 130px;
+}
+
+.capybara > img {
+  width: 100%;
+}
+
+.header {
+  padding: 50px 10px 0px 10px;
+  justify-content: space-between;
+
+  display: flex;
+  align-items: center;
+}
+
+.header h1 {
+  font-family: var(--secondary-font);
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.main {
+  border-radius: var(--round-sm);
+  background-color: var(--card);
+  padding: 40px;
+}
+
+.dng-form {
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 20px;
+  max-width: 700px;
+  padding-bottom: 30px;
+}
+
+.output {
+  max-width: 700px;
+  padding-top: 30px;
+  margin: auto;
+  border-top: 2px solid var(--upper-card);
+  display: flex;
+  justify-content: center;
+}
+
+.file-data {
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group > label {
+  display: block;
+  color: var(--main-text);
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.input-group > input {
+  background-color: var(--upper-card);
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-size: 1.1rem;
+  color: var(--card-text);
+  border-radius: var(--round-sm);
+  outline: none;
+  border: solid transparent 2px;
+  transition: 0.1s;
+}
+
+.input-group > input:focus {
+  border: solid var(--secondary) 2px;
+  transition: 0.1s;
+}
+
+.button {
+  color: var(--onPrimary);
+  outline: none;
+  border: solid transparent 2px;
+  text-align: center;
+
+  font-size: 1.2rem;
+  font-weight: 600;
+
+  background-color: var(--primary);
+  padding: 10px 40px;
+  border-radius: var(--round-sm);
+  transition: 0.2s;
+}
+
+.button:focus {
+  border: solid var(--card-text) 2px;
+  transition: 0.1s;
+}
+
+.button:hover {
+  cursor: pointer;
+  background-color: var(--secondary);
+  transition: 0.2s;
+}
+
+.file-input::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: var(--primary);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: var(--onPrimary);
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+}
+
+.file-block {
+  max-width: 300px;
+  color: var(--main-text);;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: var(--card);
+  border: 1px solid var(--card);
+}
+
+.file-input::file-selector-button:hover {
+  background-color: var(--secondary);
+}
+
+.drop-container {
+  position: relative;
+  background-color: var(--upper-card);
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  max-width: 340px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed transparent;
+  cursor: pointer;
+  transition:
+    background 0.2s ease-in-out,
+    border 0.2s ease-in-out;
+}
+
+.drop-container:hover {
+  border-color: var(--accent);
+}
+
+.drop-container.drag-active {
+  border-color: var(--accent);
+}
+
+.drop-container > .drop-icon {
+  height: 64px;
+}
+
+.drop-title {
+  color: var(--card-text);
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  transition: color 0.2s ease-in-out;
+}
+
+.copy {
+  font-size: 0.8rem;
+  padding: 10px;
+  display: block;
+  text-align: center;
+}
+
+@media (max-width: 750px) {
+  .dng-form {
+    grid-template-columns: 1fr;
+  }
+
+  .drop-container,
+  .file-data {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 450px) {
+  .header {
+    flex-direction: column;
+  }
+  .title-div {
+    text-align: center;
+  }
+
+  .file-block {
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+  }
+}

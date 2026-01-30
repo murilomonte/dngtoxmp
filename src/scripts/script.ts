@@ -1,15 +1,19 @@
 import { xmpExtract } from "./xmpExtract.js";
 import { xmpParse } from "./xmpParse.js";
 import { xpmCreateFile } from "./xmpCreateFile.js";
+import { dropContainer } from "./dropcontainer.js";
+import { easter } from "./easter.js";
 
 const dngform = document.getElementById("dngform");
 const output = document.querySelector<HTMLElement>(".output");
 
 function downlodButton(file: File) {
-  output!.innerHTML = ''
+  output!.innerHTML = "";
   const dlBtn = document.createElement("a");
 
   const url = URL.createObjectURL(file);
+  dlBtn.classList.add("button");
+  output?.classList.remove("disabled");
   dlBtn.href = url;
   dlBtn.download = file.name;
   dlBtn.innerText = `Download ${file.name}`;
@@ -54,3 +58,9 @@ dngform?.addEventListener("submit", async (event) => {
     }
   }
 });
+
+/* DROP CONTAINER */
+dropContainer();
+
+/* SHHHHH */
+easter()
