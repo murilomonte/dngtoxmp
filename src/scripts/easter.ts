@@ -1,10 +1,10 @@
 export function easter() {
   const images = [
-    "/images/capybara/capy01.png",
-    "/images/capybara/capy02.png",
-    "/images/capybara/capy03.png",
-    "/images/capybara/capy04.png",
-    "/images/capybara/capy05.png",
+    "/dngtoxmp/images/capybara/capy01.png",
+    "/dngtoxmp/images/capybara/capy02.png",
+    "/dngtoxmp/images/capybara/capy03.png",
+    "/dngtoxmp/images/capybara/capy04.png",
+    "/dngtoxmp/images/capybara/capy05.png",
   ];
 
 

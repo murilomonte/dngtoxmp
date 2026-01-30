@@ -12,7 +12,7 @@
   --main-text: #1c2226;
   --sec-text: #7993a4;
 
-  --round-sm: 5px;
+  --round-sm: 8px;
 
   --main-font: "IBM Plex Sans";
   --secondary-font: "EB Garamond";
@@ -181,7 +181,7 @@ a {
   border: none;
   background: var(--primary);
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: var(--round-sm);
   color: var(--onPrimary);
   cursor: pointer;
   transition: background 0.2s ease-in-out;
@@ -189,9 +189,9 @@ a {
 
 .file-block {
   max-width: 300px;
-  color: var(--main-text);;
+  color: var(--main-text);
   padding: 5px;
-  border-radius: 10px;
+  border-radius: var(--round-sm);
   background-color: var(--card);
   border: 1px solid var(--card);
 }
@@ -211,7 +211,7 @@ a {
   height: 350px;
   max-width: 340px;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: var(--round-sm);
   border: 2px dashed transparent;
   cursor: pointer;
   transition:
@@ -234,7 +234,7 @@ a {
 .drop-title {
   color: var(--card-text);
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
   transition: color 0.2s ease-in-out;
 }
