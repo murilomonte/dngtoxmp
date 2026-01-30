@@ -17,4 +17,4 @@ This simple project uses the [exifreader](https://www.npmjs.com/package/exifread
 
 ## Thanks
 
-Thank you Kallya for the capybara illustrations!
+Thank you [Kallya](https://www.behance.net/kallyaellen) for the capybara illustrations!
