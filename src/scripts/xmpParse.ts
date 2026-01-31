@@ -6,44 +6,48 @@ const NS = {
 };
 
 export function xmpParse(xmpstr: string, name: string, group: string) {
-  const parser = new DOMParser();
-  const xml = parser.parseFromString(xmpstr, "application/xml");
+  try {
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(xmpstr, "application/xml");
 
-  const rdfDescription = xml.getElementsByTagNameNS(NS.rdf, "Description")[0];
+    const rdfDescription = xml.getElementsByTagNameNS(NS.rdf, "Description")[0];
 
-  // Adicionando autor
-  const crsName = xml.createElementNS(NS.crs, "crs:Name");
-  const rdfNameAlt = xml.createElementNS(NS.rdf, "rdf:Alt");
-  const rdfNameLi = xml.createElementNS(NS.rdf, "rdf:li");
+    // Adicionando autor
+    const crsName = xml.createElementNS(NS.crs, "crs:Name");
+    const rdfNameAlt = xml.createElementNS(NS.rdf, "rdf:Alt");
+    const rdfNameLi = xml.createElementNS(NS.rdf, "rdf:li");
 
-  rdfNameLi.setAttributeNS(
-    "http://www.w3.org/XML/1998/namespace",
-    "xml:lang",
-    "x-default",
-  );
-  rdfNameLi.textContent = name;
+    rdfNameLi.setAttributeNS(
+      "http://www.w3.org/XML/1998/namespace",
+      "xml:lang",
+      "x-default",
+    );
+    rdfNameLi.textContent = name;
 
-  rdfNameAlt.appendChild(rdfNameLi);
-  crsName.appendChild(rdfNameAlt);
-  rdfDescription.appendChild(crsName);
+    rdfNameAlt.appendChild(rdfNameLi);
+    crsName.appendChild(rdfNameAlt);
+    rdfDescription.appendChild(crsName);
 
-  // Adicionando grupo
-  const crsGroup = xml.createElementNS(NS.crs, "crs:Group");
-  const rdfGroupAlt = xml.createElementNS(NS.rdf, "rdf:Alt");
-  const rdfGroupLi = xml.createElementNS(NS.rdf, "rdf:li");
+    // Adicionando grupo
+    const crsGroup = xml.createElementNS(NS.crs, "crs:Group");
+    const rdfGroupAlt = xml.createElementNS(NS.rdf, "rdf:Alt");
+    const rdfGroupLi = xml.createElementNS(NS.rdf, "rdf:li");
 
-  rdfGroupLi.setAttributeNS(
-    "http://www.w3.org/XML/1998/namespace",
-    "xml:lang",
-    "x-default",
-  );
-  rdfGroupLi.textContent = group;
+    rdfGroupLi.setAttributeNS(
+      "http://www.w3.org/XML/1998/namespace",
+      "xml:lang",
+      "x-default",
+    );
+    rdfGroupLi.textContent = group;
 
-  rdfGroupAlt.appendChild(rdfGroupLi);
-  crsGroup.appendChild(rdfGroupAlt);
-  rdfDescription.appendChild(crsGroup);
+    rdfGroupAlt.appendChild(rdfGroupLi);
+    crsGroup.appendChild(rdfGroupAlt);
+    rdfDescription.appendChild(crsGroup);
 
-  return xmpSerializer(xml);
+    return xmpSerializer(xml);
+  } catch (err) {
+    throw new Error("An error occurred while converting the file to xmp.");
+  }
 }
 
 function xmpSerializer(xml: Document): string {

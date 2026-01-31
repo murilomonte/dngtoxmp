@@ -41,7 +41,7 @@ dngform?.addEventListener("submit", async (event) => {
     const files = dnginput?.files;
 
     if (!files || files.length === 0) {
-      throw new Error("Insert a .dng file.");
+      throw new Error("Insert a valid file.");
     }
 
     const xmpData = await xmpExtract(files[0]);
@@ -55,6 +55,7 @@ dngform?.addEventListener("submit", async (event) => {
       const errorDiv = document.createElement("div");
       errorDiv.innerText = err.message;
       output?.appendChild(errorDiv);
+      output?.classList.remove("disabled");
     }
   }
 });
@@ -63,4 +64,4 @@ dngform?.addEventListener("submit", async (event) => {
 dropContainer();
 
 /* SHHHHH */
-easter()
+easter();

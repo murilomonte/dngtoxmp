@@ -14,5 +14,5 @@ export function xpmCreateFile(xmpData: string, name: string, group: string) {
 }
 
 function sanitizeFilename(name: string) {
-  return name.replace(/[^A-Za-z0-9._-]+/g, "").replace(/^\.+/, "");
+  return name.replace(/[^\p{L}\p{N}._-]+/gu, "").replace(/^\.+/, "");
 }

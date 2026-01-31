@@ -13,6 +13,12 @@ export async function xmpExtract(file: File) {
 
     return tags.xmp._raw.replaceAll("\n", "");
   } catch (err) {
-    throw new Error("An error occurred while extracting the metadata from the file.");
+    if (err instanceof Error) {
+      throw new Error(err.message);
+    } else {
+      throw new Error(
+        "An error occurred while extracting the metadata from the file.",
+      );
+    }
   }
 }
